@@ -10,26 +10,22 @@ $leapworkSchedules = Get-VstsInput -Name leapworkSchedules
 
 function Get-NewtonsoftJsonAssembly
 {  
-  return $PSScriptRoot, 'ps_modules', "Newtonsoft.Json", 'lib','net45','Newtonsoft.Json.dll' -Join '\' 
-}
-
-function Get-NetHttpAssembly
-{
-  return $PSScriptRoot, 'ps_modules', "System.Net.Http", 'lib','net46','System.Net.Http.dll' -Join '\' 
+  return $PSScriptRoot, 'ps_modules', "Newtonsoft.Json", 'lib','netstandard2.0','Newtonsoft.Json.dll' -Join '\' 
 }
 
 $newtonsoft = Get-NewtonsoftJsonAssembly
-$systemNetHttp = Get-NetHttpAssembly
+$netstandard = "${env:ProgramFiles(x86)}\\Reference Assemblies\\Microsoft\\Framework\\.NETFramework\\v4.8\\Facades\\netstandard.dll"
 
 Write-Host "newtonsoft path: $newtonsoft"
-Write-Host "systemNetHttp path: $systemNetHttp"
+Write-Host "netstandard path: $netstandard"
 
 [Reflection.Assembly]::LoadFile($newtonsoft)
-[Reflection.Assembly]::LoadFile($systemNetHttp)
+[Reflection.Assembly]::LoadFile($netstandard)
 
 $assemblies = @()
 $assemblies += $newtonsoft 
-$assemblies += $systemNetHttp
+$assemblies += $netstandard
+$assemblies += "System.Net.Http"
 $assemblies += "System.Runtime, Version=4.0.20.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
 $assemblies += "System.IO, Version=4.0.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
 $assemblies += "System.Xml.ReaderWriter, Version=4.0.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
