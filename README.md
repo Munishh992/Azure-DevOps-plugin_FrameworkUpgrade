@@ -55,3 +55,5 @@ Alternatively, you can install it using gallery extension manager. Here is a sma
 # Screenshots
 ![ScreenShot](https://github.com/leapwork/Azure-DevOps-plugin/blob/main/images/screen1.png)
 ![ScreenShot](https://github.com/leapwork/Azure-DevOps-plugin/blob/main/images/screen2.png)
+
+- Git versioning access validated by Leapwork at 2026-09-23 07:47:57 UTC.
